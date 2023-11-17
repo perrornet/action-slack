@@ -108,8 +108,9 @@ export class Client {
 
   async send(payload: string | IncomingWebhookSendArguments) {
     core.debug(JSON.stringify(context, null, 2));
-    await this.webhook.send(payload);
-    core.debug('send message');
+    const resp = await this.webhook.send(payload);
+    core.info('send message');
+    core.info(resp.text);
   }
 
   injectColor() {
